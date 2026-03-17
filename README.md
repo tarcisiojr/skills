@@ -2,28 +2,28 @@
 
 Coleção pessoal de skills para agentes de IA (Claude Code, Copilot, OpenCode, Gemini, Cursor, etc.).
 
-Skills seguem o formato [Agent Skills](https://agentskills.io/) e podem ser instaladas via [`npx skills`](https://github.com/vercel-labs/skills).
+Skills seguem o formato [Agent Skills](https://agentskills.io/) e podem ser instaladas via [`npx skill`](https://github.com/vercel-labs/skill).
 
 ## Instalação
 
 ```bash
 # Instalar todas as skills
-npx skills add tarcisiojunior/skills
+npx skill add git@github.com:tarcisiojr/skills.git
 
 # Listar skills disponíveis
-npx skills add tarcisiojunior/skills --list
+npx skill add git@github.com:tarcisiojr/skills.git --list
 
 # Instalar skill específica
-npx skills add tarcisiojunior/skills --skill dev-python
+npx skill add git@github.com:tarcisiojr/skills.git --skill dev-python
 
 # Instalar globalmente (disponível em todos os projetos)
-npx skills add tarcisiojunior/skills --skill dev-python -g
+npx skill add git@github.com:tarcisiojr/skills.git --skill dev-python -g
 
 # Instalar para agentes específicos
-npx skills add tarcisiojunior/skills -a claude-code -a opencode
+npx skill add git@github.com:tarcisiojr/skills.git -a claude-code -a opencode
 
 # Instalação não-interativa
-npx skills add tarcisiojunior/skills --skill dev-python -g -a claude-code -y
+npx skill add git@github.com:tarcisiojr/skills.git --skill dev-python -g -a claude-code -y
 ```
 
 ## Skills Disponíveis

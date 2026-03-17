@@ -2,35 +2,71 @@
 
 Coleção pessoal de skills para agentes de IA (Claude Code, Copilot, OpenCode, Gemini, Cursor, etc.).
 
-Skills seguem o formato [Agent Skills](https://agentskills.io/) e podem ser instaladas via [`npx skill`](https://github.com/vercel-labs/skill).
+Skills seguem o formato [Agent Skills](https://agentskills.io/) e podem ser instaladas via [`npx skills`](https://github.com/vercel-labs/skills).
 
 ## Instalação
 
 ```bash
-# Instalar todas as skills
-npx skill add git@github.com:tarcisiojr/skills.git
+# Instalar skills (modo interativo)
+npx skills add tarcisiojr/skills
 
-# Listar skills disponíveis
-npx skill add git@github.com:tarcisiojr/skills.git --list
+# Listar skills disponíveis no repositório
+npx skills add tarcisiojr/skills --list
 
 # Instalar skill específica
-npx skill add git@github.com:tarcisiojr/skills.git --skill dev-python
+npx skills add tarcisiojr/skills --skill dev-python
+
+# Instalar múltiplas skills
+npx skills add tarcisiojr/skills --skill dev-python --skill dev-design-patterns
 
 # Instalar globalmente (disponível em todos os projetos)
-npx skill add git@github.com:tarcisiojr/skills.git --skill dev-python -g
+npx skills add tarcisiojr/skills --skill dev-python -g
 
 # Instalar para agentes específicos
-npx skill add git@github.com:tarcisiojr/skills.git -a claude-code -a opencode
+npx skills add tarcisiojr/skills -a claude-code -a opencode
 
-# Instalação não-interativa
-npx skill add git@github.com:tarcisiojr/skills.git --skill dev-python -g -a claude-code -y
+# Instalar todas as skills para todos os agentes
+npx skills add tarcisiojr/skills --all
+
+# Instalação não-interativa (CI/CD friendly)
+npx skills add tarcisiojr/skills --skill dev-python -g -a claude-code -y
 ```
+
+### Formatos de origem suportados
+
+```bash
+# GitHub shorthand (owner/repo) - recomendado
+npx skills add tarcisiojr/skills
+
+# URL completa do GitHub
+npx skills add https://github.com/tarcisiojr/skills
+
+# URL git via SSH
+npx skills add git@github.com:tarcisiojr/skills.git
+
+# Caminho local
+npx skills add ./caminho-local
+```
+
+### Outros comandos
+
+| Comando | Descrição |
+|---------|-----------|
+| `npx skills list` | Listar skills instaladas |
+| `npx skills find [query]` | Buscar skills por palavra-chave |
+| `npx skills remove [skills]` | Remover skills instaladas |
+| `npx skills check` | Verificar atualizações disponíveis |
+| `npx skills update` | Atualizar todas as skills |
+| `npx skills init [name]` | Criar template de SKILL.md |
 
 ## Skills Disponíveis
 
 | Skill | Descrição |
 |-------|-----------|
 | [dev-python](skills/dev-python/) | Desenvolvimento Python com boas práticas, estilo Pythônico e padrões modernos. Baseada em Fluent Python, Effective Python, PEPs oficiais e ferramentas modernas (ruff, mypy, pytest, uv). |
+| [dev-design-patterns](skills/dev-design-patterns/) | Padrões de projeto, princípios de design e arquitetura de software. Cobre Clean Code, SOLID, GoF, Clean Architecture, Hexagonal, DDD, CQRS e TDD. |
+| [dev-architecture-principles](skills/dev-architecture-principles/) | Princípios de arquitetura de sistemas modernos — segurança by design, escalabilidade, resiliência, observabilidade, API-First, multi-tenancy SaaS e cloud native. |
+| [rest-api-design](skills/rest-api-design/) | Design de APIs REST seguindo convenções padronizadas. Define padrões de nomenclatura, status codes, envelopes de erro, paginação e versionamento. |
 
 ## Sincronização com `skills-sync`
 
@@ -85,14 +121,14 @@ skills/
 ├── src/skills_sync/              # Código-fonte do CLI
 ├── tests/                        # Testes automatizados
 ├── skills/
-│   └── dev-python/
-│       ├── SKILL.md              # Definição principal da skill
-│       └── references/           # Documentação detalhada
-│           ├── modern-python.md  # Type hints, async, features 3.10+
-│           ├── pythonic-patterns.md  # Idiomas e padrões Pythônicos
-│           └── project-setup.md  # Estrutura de projeto e ferramentas
+│   ├── dev-python/               # Desenvolvimento Python
+│   ├── dev-design-patterns/      # Padrões de projeto e arquitetura de software
+│   ├── dev-architecture-principles/ # Princípios de arquitetura de sistemas
+│   └── rest-api-design/          # Design de APIs REST
 └── README.md
 ```
+
+Cada skill contém um `SKILL.md` (definição principal) e opcionalmente um diretório `references/` com documentação detalhada.
 
 ## Como criar uma nova skill
 
